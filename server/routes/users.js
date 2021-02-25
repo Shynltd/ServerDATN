@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
-/* GET users listing. */
 let md5 = require('md5');
 let jwt = require('jsonwebtoken');
-
+/* GET users listing. */
 let User = require('../model/User');
 let middle = require('../middleware/middle');
 
@@ -21,12 +19,12 @@ router.post('/login', async (req, res) => {
   let phoneNumber = req.body.phoneNumber;
   let user = await User.findOne({phoneNumber});
   if (!user) {
-    res.render('login',{err:true,message: `Tài khoản không tồn tại`});
+    res.render('login',{err:true,message: `Tài khoản không tồn tại`, layout:'default'});
     return;
   }
   let passWord = md5(req.body.passWord);
   if (passWord != user.passWord) {
-    res.render('login',{err:true,message: `Mật khẩu không chính xác`});
+    res.render('login',{err:true,message: `Mật khẩu không chính xác`,layout:'default'});
     return;
   }
   res.cookie("id", user._id);
