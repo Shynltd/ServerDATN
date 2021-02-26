@@ -16,7 +16,6 @@ module.exports.checkLogin = (req, res, next) => {
     }
 }
 module.exports.checkAuth = async (req, res, next) => {
-    console.log(`Chạy vào`)
     if (req.cookies.id) {
        let user = await User.findOne({_id:req.cookies.id});
        if (user){

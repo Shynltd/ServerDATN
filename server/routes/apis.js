@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
     res.json({status: true, token: token, message: `Đăng nhập thành công`});
 });
 
-router.get('/register', function (req, res, next) {
+router.get('/register', function (req, res) {
     res.render('register');
 });
 

@@ -16,6 +16,11 @@ let userSchema = new mongosee.Schema({
         type: String,
         required: true
     },
+    role: {
+        type:String,
+        required:true,
+        default:"Customer"
+    },
     avatar: {
         type:String,
         required:true,
